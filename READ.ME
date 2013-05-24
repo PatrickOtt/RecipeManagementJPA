@@ -1,0 +1,182 @@
+In den vergangenen Videos haben wir schon eigene Servlets geschrieben, die eine Response an
+den anfragenden Client zurückschicken könnten, Formulare verarbeiten konnten und eine Sitzung
+verwaltet haben. 
+
+Sicher schon eine ganze Menge, doch wenn wir nochmal kurz an unsere Liste mit den 
+Zutaten für das Rezept zurück denken, dann stellt sich die Frage was passiert mit der
+Liste, wenn der Server mal runterfällt oder runtergefahren wird?
+
+Alles weg :-(
+
+Also möchte ich in diesem Video zeigen wie wir mittels JPA (Java Persistence API) und als Implementierung
+Hibernate uns dabei helfen kann, die Zutaten zum Rezept in einer Datenbank zu speichern,
+damit wir auch später noch einmal das Rezept anschauen und uns die Zutaten ausgeben lassen können.
+
+Genug der Laberei, fangen wir an...
+
+Kurz muss ich euch nochmal belästigen, wir brauchen eine
+Datenbank, die erstelle ich mir hier unter Linux in der
+Konsole, also schwarzes Fenster auf...
+
+Die Datenbank mysql brauchen wir nun, um für unsere
+frisch angelegte Datenbank "recipes" einen priviligierten
+Benutzer anzulegen und ihm die Berechtigungen zu geben..
+
+So, damit haben wir uns die neue, noch leere Datenbank
+erstellt und einen Benutzer angelegt (recipeUser), der
+mit allen Rechten auf die Datenbank zugreifen darf, d.h.
+er darf INSERT, UPDATE, DELETE Statements gegen die 
+Datenbank loslassen, kann aber auch weitere Benutzer 
+zum Zugriff auf recipes erstellen. 
+
+Gut, weiter geht's mit den Entity-Klassen, hier bauen
+wir uns eine Klasse für die Rezepte, die soll Recipe 
+heißen und eine Klasse Ingredient (für die Zutat).
+
+Bevor wir die Entities erstellen, sollten wir unserem
+Project noch eben die JPA Facet hinzufügen, das geht
+mit einem Rechtsklick auf den Projectnamen und dann
+im Kontextmenu Properties (ganz unten) auswählen..
+
+So, damit haben wir unserem Project beigebracht, das
+es mittels JPA Objekte persistent machen kann. Wie das
+geht, erkläre ich nachher noch ganz kurz.. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Damit sind die Entities fertig und wir können uns aus den Entity-Klasses das Datenbank-Schema
+generieren lassen.
+
+Und siehe da, es hat alles funktioniert und wir haben unsere
+beiden Tabellen in der Datenbank. Ich zeige das nochmal
+in der Konsole: ->
+
+Alles klar.
+
+Dann gehen wir zurück zur JavaEE Perspective und bauen uns
+das Eingabeformular zusammen.
+
+Und das machen wir dann im 2. Teil des Videos... Jetzt erstmal schnell Kaffee kochen, 
+Fenster auf und mal eben durchatmen.
+
+
+Willkommen zum 2. Teil unseres kleinen Video-Tutorials.
+
+Bisher haben wir die beiden Entity-Klassen Recipe und Ingredient gebaut, um ein
+Rezept anzulegen und die Zutaten zum Rezept zu speichern.
+
+Weiterhin haben wir schon ein Servlet (RecipeServlet) gebaut, das die beiden Methoden
+doGet() und doPost() sowie die Methode processRequest(HttpServletRequest request, HttpServletResponse response)
+beinhaltet.
+
+So, neben dem Servlet haben wir auch die Datenbank schon erstellt, in die wir nachher das Rezept
+samt Zutaten abspeichern wollen, um das / die Rezept(e) auch nach einem Neustart des Applicationservers
+noch ansehen können.
+
+Also, fangen wir mit der JSP Seite an.
+
+Okay, damit ist die JSP Seite fertig, testen wir mal.. mit STRG + F11 deployen wir unser Project 
+auf den Glassfish.
+
+Wir können nun also schon ein Rezept erstellen und die passenden Zutaten hinzufügen. Sehr gut.
+
+Im 3. Teil des Videos werde ich euch dann zeigen, wie wir das Rezept samt Zutaten in der Datenbank speichern.
+
+Also, dran bleiben!
+
+
+
+
+
+Hallo zum 3. Teil des kleinen JPA Einführungs-Tutorials.
+
+Bisher haben wir uns angesehen wie wir Entity-Klasses erstellen (Annotation @Entity, @Table, @Id,...)
+und haben aus unserem Eingabeformular (index.jsp) Daten an ein Servlet übermittelt (per Request) und 
+im Servlet diese Daten dann aus dem request-Object extrahiert und in die entsprechenden 
+Entity-Objects geschrieben.
+
+Z.B. solch ein Recipe-Object wurde dann an die HttpSession angehängt, damit der Benutzer während seiner
+Sitzung mit diesem Rezept-Object arbeiten kann und z.B. Zutaten für dieses Rezept, zum Rezept speichern
+zu können. Man, ist das heute wieder umständlich ;)
+
+Gut, und jetzt wollen wir die Rezepte auch noch über solch eine Client-Session hinaus persisten 
+speichern. Hierzu haben wir uns ja bereits aus den Entity-Klassen ein Datenbank-Schema (sehr rudimentär)
+generieren lassen.
+
+Los geht's.
+
+Soweit so gut, testen wir das Ganze.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
